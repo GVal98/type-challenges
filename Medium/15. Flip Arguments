@@ -1,0 +1,7 @@
+type MyReverse<T extends unknown[]> = T extends [...infer F, infer S]
+  ? [S, ...MyReverse<F>]
+  : [];
+
+type FlipArguments<T> = T extends (...args: [...infer P]) => infer R
+  ? (...args: MyReverse<P>) => R
+  : never;
