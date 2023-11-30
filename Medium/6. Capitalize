@@ -1,0 +1,6 @@
+interface CapitalizedChars {
+  f: "F";
+}
+type Capitalize<S> = S extends `${infer C}${infer T}`
+  ? `${C extends keyof CapitalizedChars ? CapitalizedChars[C] : C}${T}`
+  : S;
